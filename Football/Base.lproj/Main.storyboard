@@ -118,13 +118,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="gTC-zA-dK0">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" id="gTC-zA-dK0">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gTC-zA-dK0" id="L9f-JD-mMQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="V9D-GC-ZnP" kind="show" identifier="PointTable" id="dTE-kE-s7T"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -137,6 +140,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KLr-pF-qsI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2471" y="-818"/>
+        </scene>
+        <!--Point Table View Controller-->
+        <scene sceneID="Q9e-wC-kaS">
+            <objects>
+                <viewController id="V9D-GC-ZnP" customClass="PointTableViewController" customModule="Football" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="SxL-aw-7wS"/>
+                        <viewControllerLayoutGuide type="bottom" id="g2s-Ox-Jia"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="waF-47-psR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C5F-61-K57" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3245" y="-818"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="X8d-QZ-RpB">
