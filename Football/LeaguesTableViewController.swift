@@ -9,7 +9,6 @@
 import UIKit
 
 class LeaguesTableViewController: UITableViewController {
-    @IBOutlet weak var menuItems: UIBarButtonItem!
     
     var leagues = [String](){
         didSet{
@@ -19,100 +18,34 @@ class LeaguesTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        menuItems.target = self.revealViewController()
-        menuItems.action = #selector(SWRevealViewController.revealToggle(_:))
         
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-        
-        //leagues = ["one","two"]
-        
-        findMenuArrayUsingApi()
+        findMenuItems()
         
     }
     
-    private func findMenuArrayUsingApi(){
-        
-        let request = getRequest()
-        
-        startTaskWithRequest(request: request)
-    }
-    
-    private func startTaskWithRequest(request: URLRequest){
-        let session = URLSession.shared
-        let task = session.dataTask(with: request) { (data, response, error) in
-            
-            guard (error == nil) else {
-                print("There was an error with your request: \(error)")
-                return
-            }
-            
-            guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
-                print("Your request returned a status code other than 2xx!")
-                return
-            }
-            
-            guard let data = data else {
-                print("No data was returned by the request!")
-                return
-            }
-            
-            let parsedResult: [[String:AnyObject]]!
-            do {
-                parsedResult = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [[String:AnyObject]]
-            } catch{
-                print("Could not parse the data as JSON:")
-                return
-            }
-            
-            for i in 0..<parsedResult.count{
-                guard let competitionsDictionary = parsedResult[i] as? [String: AnyObject]  else{
-                    return
+    private func findMenuItems(){
+        RestAPIManager.sharedInstance.getLeagues{ respnseArray  in
+            for i in 0..<respnseArray.count{
+                if let data: [String: AnyObject] = respnseArray[i] as? [String: AnyObject] {
+                    self.leagues.append(data[ConstantUrl.FootballResponseKey.Caption] as! String)
                 }
-                self.leagues.append(competitionsDictionary["league"] as! String)
-                //print(competitionsDictionary["league"] as! String)
             }
             self.refresh()
-            //print(self.leagues)
-            
         }
-        print(leagues)
-        task.resume()
     }
     
-    private func refresh(){
+        private func refresh(){
         DispatchQueue.main.sync {
             self.tableView.reloadData()
         }
     }
     
-    // MARK: - Get Call
-    
-    private func getRequest() -> URLRequest {
-        let urlString = ConstantUrl.FootballURL.competitionsUrl + getCurrentSeason()
-        let url = NSURL(string: urlString)
-        var request = URLRequest(url: url as! URL)
-        request.addValue("cfb4022f9677439db603161f03e9bb0e ", forHTTPHeaderField: "X-Auth-Token")
-        request.httpMethod = "GET"
-        
-        return request
-    }
-    
-    private func getCurrentSeason() -> String{
-        let date = Date()
-        let calendar = Calendar.current
-        let season = calendar.component(.year, from: date)
-        
-        return String(describing: season - 1)
-    }
-
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return leagues.count
     }
 
@@ -125,14 +58,6 @@ class LeaguesTableViewController: UITableViewController {
         return cell
     }
     
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
 
     /*
     // Override to support editing the table view.

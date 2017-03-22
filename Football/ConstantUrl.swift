@@ -11,6 +11,7 @@ struct ConstantUrl {
     
     struct FootballResponseKey {
         static let Status = "stat"
+        static let Caption = "caption"
     }
     
     struct FootballResponseValue {
