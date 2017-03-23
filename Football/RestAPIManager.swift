@@ -2,7 +2,7 @@
 import Foundation
 
 typealias serviceArrayResponse = (NSArray , NSError?) -> Void
-typealias serviceDictionaryResponse = (NSDictionary , NSError?) -> Void
+typealias serviceDictionaryResponse = ([String: AnyObject] , NSError?) -> Void
 
 
 class RestAPIManager: NSObject {
@@ -22,17 +22,17 @@ class RestAPIManager: NSObject {
         })
     }
     
-    func getLeaguesTableInfo(onCompletion: @escaping (NSDictionary) -> Void){
+    func getLeaguesTableInfo(onCompletion: @escaping ([String: AnyObject]) -> Void){
         makeHTTPGetRequestForDictionary(path: leagueTableAddress, onCompletion: { json , error -> Void in
             onCompletion(json)
         })
     }
     
-    
     func makeHTTPGetRequestForArray(path: String, onCompletion: @escaping serviceArrayResponse){
-        let request = URLRequest(url: NSURL(string: path) as! URL)
+        var request = URLRequest(url: NSURL(string: path) as! URL)
+        request.addValue("cfb4022f9677439db603161f03e9bb0e", forHTTPHeaderField: "X-Auth-Token")
+        request.httpMethod = "GET"
         let session = URLSession.shared
-        
         let task = session.dataTask(with: request, completionHandler: { (data, response, error) in
             
             let json = try? JSONSerialization.jsonObject(with: data!, options: [])
@@ -44,7 +44,9 @@ class RestAPIManager: NSObject {
     }
     
     func makeHTTPGetRequestForDictionary(path: String, onCompletion: @escaping serviceDictionaryResponse){
-        let request = URLRequest(url: NSURL(string: path) as! URL)
+        var request = URLRequest(url: NSURL(string: path) as! URL)
+        request.addValue("cfb4022f9677439db603161f03e9bb0e", forHTTPHeaderField: "X-Auth-Token")
+        request.httpMethod = "GET"
         let session = URLSession.shared
         
         let task = session.dataTask(with: request, completionHandler: { (data, response, error) in
@@ -52,7 +54,7 @@ class RestAPIManager: NSObject {
             let json = try? JSONSerialization.jsonObject(with: data!, options: [])
             
             //let json: JSONSerialization = JSONSerialization() //JSONSerialization(data : dataa)
-            onCompletion(json as! NSDictionary ,error as NSError?)
+            onCompletion(json as! [String: AnyObject] ,error as NSError?)
         })
         task.resume()
     }

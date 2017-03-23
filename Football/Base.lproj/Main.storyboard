@@ -43,7 +43,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DD3-NM-5GR" id="vcd-gv-oBU">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
@@ -54,7 +54,7 @@
                                 <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FZs-PK-oms" id="jdG-Dg-MQb">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
@@ -152,12 +152,41 @@
                     <view key="view" contentMode="scaleToFill" id="waF-47-psR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gYS-ag-PFL">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="pointCell" id="dYJ-tD-GSj">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dYJ-tD-GSj" id="N3D-b0-f5C">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="V9D-GC-ZnP" id="xVh-Js-2qP"/>
+                                    <outlet property="delegate" destination="V9D-GC-ZnP" id="a06-os-0AQ"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="gYS-ag-PFL" firstAttribute="leading" secondItem="waF-47-psR" secondAttribute="leading" id="Ng5-re-m5x"/>
+                            <constraint firstAttribute="trailing" secondItem="gYS-ag-PFL" secondAttribute="trailing" id="Yv5-Dx-J4b"/>
+                            <constraint firstItem="g2s-Ox-Jia" firstAttribute="top" secondItem="gYS-ag-PFL" secondAttribute="bottom" id="tlo-xM-LN0"/>
+                            <constraint firstItem="gYS-ag-PFL" firstAttribute="top" secondItem="waF-47-psR" secondAttribute="top" id="zJF-P5-kKG"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="pointTable" destination="gYS-ag-PFL" id="1R3-Ap-umd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C5F-61-K57" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3245" y="-818"/>
+            <point key="canvasLocation" x="3244" y="-818.14092953523243"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="X8d-QZ-RpB">
