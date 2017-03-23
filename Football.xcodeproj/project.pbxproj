@@ -75,8 +75,8 @@
 				6A7E42281E80DB0D0097B0A8 /* Football-Bridging-Header.h */,
 				6A43F8371E80F05C00D26163 /* ConstantUrl.swift */,
 				6A7E422D1E80E6B50097B0A8 /* MenuTableViewController.swift */,
-				6ACC88691E81344100E638FE /* LeaguesTableViewController.swift */,
 				6A03F2F61E825780006871A1 /* TeamViewController.swift */,
+				6ACC88691E81344100E638FE /* LeaguesTableViewController.swift */,
 				6A03F2FA1E82912D006871A1 /* PointTableViewController.swift */,
 				6A03F2F81E82676E006871A1 /* RestAPIManager.swift */,
 			);

@@ -26,7 +26,7 @@ class LeaguesTableViewController: UITableViewController {
     }
     
     private func findMenuItems(){
-        RestAPIManager.sharedInstance.getLeagues{ respnseArray  in
+        RestAPIManager.sharedInstance.getLeaguesInfo{ respnseArray  in
             for i in 0..<respnseArray.count{
                 if let info: [String: AnyObject] = respnseArray[i] as? [String: AnyObject] {
                     self.leagueInfo.append(info)
@@ -37,7 +37,7 @@ class LeaguesTableViewController: UITableViewController {
         }
     }
     
-        private func refresh(){
+    private func refresh(){
         DispatchQueue.main.sync {
             self.tableView.reloadData()
         }
