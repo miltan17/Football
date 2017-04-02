@@ -18,6 +18,12 @@ class PointTableViewController: UIViewController, UITableViewDelegate, UITableVi
     
     var pointTableInformation = [String: AnyObject]()
     
+    var groupData = [String: AnyObject]()
+    
+    var eachGroup = [String: AnyObject]()
+    
+    var keys = [String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initLeagueTableAddress()
@@ -42,7 +48,13 @@ class PointTableViewController: UIViewController, UITableViewDelegate, UITableVi
                 let key: String = keyArr[1] as! String
                 
                 print(groupA[key]!.count)*/
-                
+                self.groupData = self.pointTableInformation["standings"]! as! [String : AnyObject]
+                self.keys = self.pointTableInformation["standings"]!.allKeys as! [String]
+                //arr[section] as! String
+                for i in 0..<self.keys.count{
+                    self.eachGroup[self.keys[i]] = self.groupData[self.keys[i]]
+                }
+                //print("each Group: \(self.groupData["B"])")
             }else{
                 print("Ever seen a league table for that competition?")
             }
@@ -73,14 +85,14 @@ class PointTableViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let rowNumber = findTotalRowAtSection(section)
-        print("Row Fount:\(rowNumber)")
+        //print("Row Found:\(rowNumber)")
         return rowNumber
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = pointTable.dequeueReusableCell(withIdentifier: "pointCell", for: indexPath)
-        //let cellData:[String: AnyObject] =
-        cell.textLabel?.text = items[indexPath.row]
+        let rowTeamData: [String: AnyObject] = findCellDataForSection(indexPath.section, withRow: indexPath.row)
+        cell.textLabel?.text = rowTeamData["team"] as! String
         return cell
     }
     
@@ -88,14 +100,25 @@ class PointTableViewController: UIViewController, UITableViewDelegate, UITableVi
         if pointTableInformation.count == 0 {
             return pointTableInformation.count
         }
-        return pointTableInformation["standings"]!.allKeys!.count
+        return keys.count
     }
     
     private func findTotalRowAtSection(_ section: Int) -> Int{
-        var arr = pointTableInformation["standings"]!.allKeys!
-        var groupData :[String: AnyObject] = pointTableInformation["standings"]! as! [String : AnyObject]
-        let key: String = arr[section] as! String
+        
+        //var groupData :[String: AnyObject] = getPointTableInformaiton()
+        let key: String = findKeyForSection(section)
         let rowCounted = groupData[key]!.count
         return rowCounted!
+    }
+    
+        
+    private func findKeyForSection(_ section: Int) -> String{
+        return keys[section] as! String
+    }
+    
+    private func findCellDataForSection(_ section: Int, withRow: Int)-> [String: AnyObject]{
+        let key: String = findKeyForSection(section)
+        let group:[[String: AnyObject]] = (groupData[key] as? [[String: AnyObject]])!
+        return group[withRow] as [String: AnyObject]
     }
 }
