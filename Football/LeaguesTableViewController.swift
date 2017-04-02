@@ -66,6 +66,7 @@ class LeaguesTableViewController: UITableViewController {
             var indexPath = self.tableView.indexPathForSelectedRow
             let destinationVC: PointTableViewController = segue.destination as! PointTableViewController
             destinationVC.leagueInformation = leagueInfo[(indexPath?.row)!]
+            destinationVC.title = self.tableView.cellForRow(at: indexPath!)?.textLabel?.text
         }
         
     }
