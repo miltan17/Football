@@ -18,16 +18,21 @@ class PointTableViewController: UIViewController, UITableViewDelegate, UITableVi
     
     var tournamentsPointTableInformation = [String: AnyObject]()
     
+    var leaguePointTableInfo = [[String: AnyObject]]()
+    
     var groupData = [String: AnyObject]()
     
     var eachGroup = [String: AnyObject]()
     
     var keys = [String]()
     
+    var isSectionPresent: Bool?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initLeagueTableAddress()
         findLeagueTableData()
+        isSectionPresent = true
     }
     
     private func findLeagueTableData(){
@@ -36,32 +41,19 @@ class PointTableViewController: UIViewController, UITableViewDelegate, UITableVi
         apiInstance.getLeaguesTableInfo{ responseArray  in
             
             if responseArray["standings"] == nil{
-                let info:[[String: AnyObject]] = (responseArray["standing"] as? [[String: AnyObject]])!
-                print(info)
+                self.isSectionPresent = false
+                self.leaguePointTableInfo = (responseArray["standing"] as? [[String: AnyObject]])!
             }else if responseArray["standing"] == nil{
-                print(responseArray)
+                self.isSectionPresent = true
                 self.tournamentsPointTableInformation = responseArray
-                /*
-                print("Response:\(self.pointTableInformation["standings"]!.allKeys!.count)")
-                //print(responseArray["standings"]!)
-                var keyArr = responseArray["standings"]!.allKeys!
-                print(keyArr)
-                var groupA :[String: AnyObject] = responseArray["standings"]! as! [String : AnyObject]
-                let key: String = keyArr[1] as! String
-                
-                print(groupA[key]!.count)*/
                 self.groupData = self.tournamentsPointTableInformation["standings"]! as! [String : AnyObject]
                 self.keys = self.tournamentsPointTableInformation["standings"]!.allKeys as! [String]
-                //arr[section] as! String
                 for i in 0..<self.keys.count{
                     self.eachGroup[self.keys[i]] = self.groupData[self.keys[i]]
                 }
-                //print("each Group: \(self.groupData["B"])")
             }else{
                 print("Ever seen a league table for that competition?")
             }
-            //print(self.pointTableInformation)
-            //print(self.pointTableInformation.sorted(by: { $0.0 < $1.0 }))
             self.refresh()
         }
     }
@@ -80,45 +72,79 @@ class PointTableViewController: UIViewController, UITableViewDelegate, UITableVi
 
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return findTotalSection()
+        if isSectionPresent!{
+            return findTotalSection()
+        }else{
+            return 1
+        }
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return " "
+        if isSectionPresent! {
+            return " "
+        }else{
+            return nil
+        }
     }
  
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        if let headerView = view as? UITableViewHeaderFooterView {
-            
-            headerView.textLabel?.textAlignment = .center
-            headerView.textLabel?.text = "Group: \(findKeyForSection(section))"
-            headerView.textLabel?.textColor = UIColor ( red: 0.0902, green: 0.2745, blue: 0.2745, alpha: 1.0 )
-            headerView.contentView.backgroundColor = UIColor.green
+        if isSectionPresent! {
+            if let headerView = view as? UITableViewHeaderFooterView {
+                headerView.textLabel?.textAlignment = .center
+                headerView.textLabel?.text = "Group: \(findKeyForSection(section))"
+                headerView.textLabel?.textColor = UIColor ( red: 0.0902, green: 0.2745, blue: 0.2745, alpha: 1.0 )
+                headerView.contentView.backgroundColor = UIColor.green
+            }
         }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let rowNumber = findTotalRowAtSection(section)
-        return rowNumber+1
+        if isSectionPresent! {
+            let rowNumber = findTotalRowAtSection(section)
+            return rowNumber+1
+        }
+        return leaguePointTableInfo.count + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0{
-            let cell = pointTable.dequeueReusableCell(withIdentifier: "firstCell", for: indexPath)
+        if isSectionPresent! {
+            if indexPath.row == 0{
+                let cell = pointTable.dequeueReusableCell(withIdentifier: "firstCell", for: indexPath)
+                return cell
+            }
+            let cell = pointTable.dequeueReusableCell(withIdentifier: "pointCell", for: indexPath) as! PointTableCell
+            let teamDataForEachRow: [String: AnyObject] = findCellDataForSection(indexPath.section, withRow: indexPath.row-1)
+            
+            cell.rank.text = String(describing: teamDataForEachRow["rank"]!)
+            cell.team.text = teamDataForEachRow["team"] as? String
+            cell.playedGame.text = String(describing: teamDataForEachRow["playedGames"]!)
+            cell.goalDifference.text = String(describing: teamDataForEachRow["goalDifference"]!)
+            cell.goalAgainst.text = String(describing: teamDataForEachRow["goalsAgainst"]!)
+            cell.goals.text = String(describing: teamDataForEachRow["goals"]!)
+            cell.points.text = String(describing: teamDataForEachRow["points"]!)
+            
+            return cell
+        }else{
+            if indexPath.row == 0{
+                let cell = pointTable.dequeueReusableCell(withIdentifier: "firstCell", for: indexPath) as! FirstTableCell
+                //cell.playedGameLabel.text = "GP"
+                cell.winsLabel.text = "W"
+                cell.lossesLabel.text = "L"
+                return cell
+            }
+            let cell = pointTable.dequeueReusableCell(withIdentifier: "pointCell", for: indexPath) as! PointTableCell
+            let rowInfo: [String: AnyObject] = leaguePointTableInfo[indexPath.row - 1]
+            
+            cell.rank.text = String(describing: rowInfo["position"]!)
+            cell.team.text = rowInfo["teamName"] as? String
+            cell.playedGame.text = String(describing: rowInfo["playedGames"]!)
+            cell.goalDifference.text = String(describing: rowInfo["wins"]!)
+            cell.goalAgainst.text = String(describing: rowInfo["losses"]!)
+            cell.goals.text = String(describing: rowInfo["goals"]!)
+            cell.points.text = String(describing: rowInfo["points"]!)
+            
             return cell
         }
-        let cell = pointTable.dequeueReusableCell(withIdentifier: "pointCell", for: indexPath) as! PointTableCell
-        let teamDataForEachRow: [String: AnyObject] = findCellDataForSection(indexPath.section, withRow: indexPath.row-1)
-
-        cell.rank.text = String(describing: teamDataForEachRow["rank"]!)
-        cell.team.text = teamDataForEachRow["team"] as? String
-        cell.playedGame.text = String(describing: teamDataForEachRow["playedGames"]!)
-        cell.goalDifference.text = String(describing: teamDataForEachRow["goalDifference"]!)
-        cell.goalAgainst.text = String(describing: teamDataForEachRow["goalsAgainst"]!)
-        cell.goals.text = String(describing: teamDataForEachRow["goals"]!)
-        cell.points.text = String(describing: teamDataForEachRow["points"]!)
-        
-        return cell
     }
     
     private func findTotalSection() -> Int{
@@ -129,8 +155,6 @@ class PointTableViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     private func findTotalRowAtSection(_ section: Int) -> Int{
-        
-        //var groupData :[String: AnyObject] = getPointTableInformaiton()
         let key: String = findKeyForSection(section)
         let rowCounted = groupData[key]!.count
         return rowCounted!

@@ -157,7 +157,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="firstCell" id="iSj-9H-hM4">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="firstCell" id="iSj-9H-hM4" customClass="FirstTableCell" customModule="Football" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iSj-9H-hM4" id="JJQ-mK-GxH">
@@ -244,6 +244,10 @@
                                                 <constraint firstItem="hFn-mC-Lnw" firstAttribute="centerY" secondItem="JJQ-mK-GxH" secondAttribute="centerY" id="xAK-3g-cC0"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="lossesLabel" destination="hFn-mC-Lnw" id="LbG-BN-jAw"/>
+                                            <outlet property="winsLabel" destination="N27-vF-XVt" id="3Sz-YX-jwL"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" tag="1" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="pointCell" rowHeight="67" id="dYJ-tD-GSj" customClass="PointTableCell" customModule="Football" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="72" width="375" height="67"/>

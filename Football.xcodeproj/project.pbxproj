@@ -14,6 +14,7 @@
 		6A16A7761E7FE3D70032D46C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A16A7741E7FE3D70032D46C /* Main.storyboard */; };
 		6A16A7781E7FE3D70032D46C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A16A7771E7FE3D70032D46C /* Assets.xcassets */; };
 		6A16A77B1E7FE3D70032D46C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A16A7791E7FE3D70032D46C /* LaunchScreen.storyboard */; };
+		6A37C8CF1E910E6700340FE7 /* FirstTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A37C8CE1E910E6700340FE7 /* FirstTableCell.swift */; };
 		6A3FAD641E90D7F600FE0C0E /* PointTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3FAD631E90D7F600FE0C0E /* PointTableCell.swift */; };
 		6A43F8381E80F05C00D26163 /* ConstantUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43F8371E80F05C00D26163 /* ConstantUrl.swift */; };
 		6A7E422C1E80DB640097B0A8 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A7E422B1E80DB640097B0A8 /* SWRevealViewController.m */; };
@@ -31,6 +32,7 @@
 		6A16A7771E7FE3D70032D46C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6A16A77A1E7FE3D70032D46C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6A16A77C1E7FE3D70032D46C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6A37C8CE1E910E6700340FE7 /* FirstTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstTableCell.swift; sourceTree = "<group>"; };
 		6A3FAD631E90D7F600FE0C0E /* PointTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointTableCell.swift; sourceTree = "<group>"; };
 		6A43F8371E80F05C00D26163 /* ConstantUrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstantUrl.swift; sourceTree = "<group>"; };
 		6A7E42281E80DB0D0097B0A8 /* Football-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Football-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 				6A03F2FA1E82912D006871A1 /* PointTableViewController.swift */,
 				6A03F2F81E82676E006871A1 /* RestAPIManager.swift */,
 				6A3FAD631E90D7F600FE0C0E /* PointTableCell.swift */,
+				6A37C8CE1E910E6700340FE7 /* FirstTableCell.swift */,
 			);
 			path = Football;
 			sourceTree = "<group>";
@@ -184,6 +187,7 @@
 				6A03F2FB1E82912D006871A1 /* PointTableViewController.swift in Sources */,
 				6A43F8381E80F05C00D26163 /* ConstantUrl.swift in Sources */,
 				6A7E422E1E80E6B50097B0A8 /* MenuTableViewController.swift in Sources */,
+				6A37C8CF1E910E6700340FE7 /* FirstTableCell.swift in Sources */,
 				6A03F2F91E82676E006871A1 /* RestAPIManager.swift in Sources */,
 				6A16A7711E7FE3D70032D46C /* AppDelegate.swift in Sources */,
 				6A7E422C1E80DB640097B0A8 /* SWRevealViewController.m in Sources */,
