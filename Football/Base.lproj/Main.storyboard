@@ -50,7 +50,7 @@
                                     <segue destination="cDs-eg-86c" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="aTc-4X-eaj"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Teams" id="FZs-PK-oms">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Fixtures" id="FZs-PK-oms">
                                 <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FZs-PK-oms" id="jdG-Dg-MQb">
@@ -59,6 +59,17 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <segue destination="cBn-9U-qm9" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="dgI-Xf-5sr"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Teams" id="nyi-aD-PoJ">
+                                <rect key="frame" x="0.0" y="116" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nyi-aD-PoJ" id="6Fg-uB-SdO">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="yb2-dt-tL9" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="IbA-jc-bZZ"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -73,9 +84,28 @@
             <point key="canvasLocation" x="911" y="124"/>
         </scene>
         <!--Team View Controller-->
+        <scene sceneID="aqa-fL-qsp">
+            <objects>
+                <viewController id="wNF-WC-ROo" customClass="TeamViewController" customModule="Football" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yPg-gc-ejZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="SfU-ET-QrG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xWq-gp-aGN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="94E-Nc-rwT"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rfs-nr-Kpn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2470" y="537"/>
+        </scene>
+        <!--Fixtures View Controller-->
         <scene sceneID="ncg-Lb-gps">
             <objects>
-                <viewController id="Ikg-EG-b0N" customClass="TeamViewController" customModule="Football" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Ikg-EG-b0N" customClass="FixturesViewController" customModule="Football" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="QsR-Te-bdD"/>
                         <viewControllerLayoutGuide type="bottom" id="UO8-rT-21q"/>
@@ -89,7 +119,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g7e-lo-dCP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2470" y="403"/>
+            <point key="canvasLocation" x="2470" y="-152"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="aVy-aQ-v3Z">
@@ -386,10 +416,28 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OHR-zY-IOX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1708" y="404"/>
+            <point key="canvasLocation" x="1708" y="-152"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="9RT-IJ-df6">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yb2-dt-tL9" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6W6-xR-ldy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="wNF-WC-ROo" kind="relationship" relationship="rootViewController" id="l3t-nZ-0yh"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ViF-9y-Nb1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1708" y="538"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="4pu-jY-MC5"/>
+        <segue reference="aTc-4X-eaj"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -9,9 +9,7 @@ class MenuTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        menuArray = ["Leagues","Teams"]
-        
-        
+        menuArray = ["Leagues","Fixtures","Teams"]
     }
 
     // MARK: - Table view data source

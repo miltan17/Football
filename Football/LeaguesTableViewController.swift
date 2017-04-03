@@ -22,7 +22,6 @@ class LeaguesTableViewController: UITableViewController {
         
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         findMenuItems()
-        
     }
     
     private func findMenuItems(){
