@@ -41,8 +41,12 @@ class PointTableViewController: UIViewController, UITableViewDelegate, UITableVi
         apiInstance.getLeaguesTableInfo{ responseArray  in
             
             if responseArray["standings"] == nil{
-                self.isSectionPresent = false
-                self.leaguePointTableInfo = (responseArray["standing"] as? [[String: AnyObject]])!
+                if responseArray["standing"] == nil{
+                    self.showAlert(responseArray["error"] as! String)
+                }else{
+                    self.isSectionPresent = false
+                    self.leaguePointTableInfo = (responseArray["standing"] as? [[String: AnyObject]])!
+                }
             }else if responseArray["standing"] == nil{
                 self.isSectionPresent = true
                 self.tournamentsPointTableInformation = responseArray
@@ -58,11 +62,39 @@ class PointTableViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
     
+    private func showAlert(_ message: String){
+        let alertController = UIAlertController(title: "No Such League", message:
+            message, preferredStyle: UIAlertControllerStyle.alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
     private func refresh(){
         DispatchQueue.main.sync {
             self.pointTable.reloadData()
+            self.animateTable()
         }
     }
+    
+    private func animateTable(){
+        let cells = pointTable.visibleCells
+        let height = pointTable.bounds.size.height
+        
+        for cell in cells{
+            cell.transform = CGAffineTransform(translationX: 0, y: height)
+        }
+        
+        var delayCount = 0
+        for cell in cells{
+            UIView.animate(withDuration: 1.75, delay: Double(delayCount) * 0.05, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+                cell.transform = CGAffineTransform.identity
+            }, completion: nil)
+            
+            delayCount += 1
+        }
+    }
+    
     
     private func initLeagueTableAddress(){
         var links: [String: AnyObject] = leagueInformation["_links"] as! [String : AnyObject]
