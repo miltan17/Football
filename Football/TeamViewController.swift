@@ -14,7 +14,6 @@ class TeamViewController: UIViewController {
         super.viewDidLoad()
         self.view.addGestureRecognizer(revealViewController().panGestureRecognizer())
         
-        
     }
 
 

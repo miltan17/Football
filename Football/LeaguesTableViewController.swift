@@ -39,6 +39,25 @@ class LeaguesTableViewController: UITableViewController {
     private func refresh(){
         DispatchQueue.main.sync {
             self.tableView.reloadData()
+            self.animateTable()
+        }
+    }
+    
+    private func animateTable(){
+        let cells = tableView.visibleCells
+        let width  = tableView.bounds.size.width
+        
+        for cell in cells{
+            cell.transform = CGAffineTransform(translationX: width , y: 0)
+        }
+        
+        var delayCount = 0
+        for cell in cells{
+            UIView.animate(withDuration: 1.75, delay: Double(delayCount) * 0.05, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+                cell.transform = CGAffineTransform.identity
+            }, completion: nil)
+            
+            delayCount += 1
         }
     }
     
