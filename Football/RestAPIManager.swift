@@ -9,6 +9,7 @@ class RestAPIManager: NSObject {
     static let sharedInstance = RestAPIManager()
     
     let leagueURL = "http://api.football-data.org/v1/competitions/?season=2016"
+    let fixtureURL = "http://api.football-data.org/v1/fixtures/"
     var leagueTableAddress: String = ""
     
     func setLeagueTableAddress(address: String){
@@ -22,8 +23,14 @@ class RestAPIManager: NSObject {
         })
     }
     
-    func getLeaguesTableInfo(onCompletion: @escaping ([String: AnyObject]) -> Void){
+    func getLeaguesPointTableInfo(onCompletion: @escaping ([String: AnyObject]) -> Void){
         makeHTTPGetRequestForDictionary(path: leagueTableAddress, onCompletion: { json , error -> Void in
+            onCompletion(json)
+        })
+    }
+    
+    func getFixtureInfo(onCompletion: @escaping ([String: AnyObject]) -> Void){
+        makeHTTPGetRequestForDictionary(path: fixtureURL, onCompletion: { json , error -> Void in
             onCompletion(json)
         })
     }

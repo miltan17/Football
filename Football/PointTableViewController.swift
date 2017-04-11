@@ -38,7 +38,7 @@ class PointTableViewController: UIViewController, UITableViewDelegate, UITableVi
     private func findLeagueTableData(){
         let apiInstance = RestAPIManager.sharedInstance
         apiInstance.setLeagueTableAddress(address: leagueTableAddress!)
-        apiInstance.getLeaguesTableInfo{ responseArray  in
+        apiInstance.getLeaguesPointTableInfo{ responseArray  in
             
             if responseArray["standings"] == nil{
                 if responseArray["standing"] == nil{
