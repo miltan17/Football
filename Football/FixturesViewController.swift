@@ -34,6 +34,7 @@ class FixturesViewController: UIViewController, UITableViewDelegate, UITableView
     
     private func getJsonData(){
         RestAPIManager.sharedInstance.getFixtureInfo{ responseDictionary  in
+            
             self.fixture = responseDictionary["fixtures"] as! [[String : AnyObject]]
             for fixture in self.fixture{
                 for (key, value) in fixture{

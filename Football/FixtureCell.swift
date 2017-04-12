@@ -10,15 +10,16 @@ import UIKit
 
 class FixtureCell: UITableViewCell {
 
+    //fixture cell for the fixtures table
     @IBOutlet weak var homeTeamName: UILabel!
-    
     @IBOutlet weak var awayTeamName: UILabel!
-    
     @IBOutlet weak var homeTeamGoal: UILabel!
-    
     @IBOutlet weak var awayTeamGoal: UILabel!
-    
     @IBOutlet weak var matchTime: UILabel!
+    
+    
+    //fixture load for the fixture table
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

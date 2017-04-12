@@ -30,6 +30,7 @@ class PointTableViewController: UIViewController, UITableViewDelegate, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         initLeagueTableAddress()
         findLeagueTableData()
         isSectionPresent = true
@@ -38,18 +39,18 @@ class PointTableViewController: UIViewController, UITableViewDelegate, UITableVi
     private func findLeagueTableData(){
         let apiInstance = RestAPIManager.sharedInstance
         apiInstance.setLeagueTableAddress(address: leagueTableAddress!)
-        apiInstance.getLeaguesPointTableInfo{ responseArray  in
+        apiInstance.getLeaguesPointTableInfo{ responseJSON  in
             
-            if responseArray["standings"] == nil{
-                if responseArray["standing"] == nil{
-                    self.showAlert(responseArray["error"] as! String)
+            if responseJSON["standings"] == nil{
+                if responseJSON["standing"] == nil{
+                    self.showAlert(responseJSON["error"] as! String)
                 }else{
                     self.isSectionPresent = false
-                    self.leaguePointTableInfo = (responseArray["standing"] as? [[String: AnyObject]])!
+                    self.leaguePointTableInfo = (responseJSON["standing"] as? [[String: AnyObject]])!
                 }
-            }else if responseArray["standing"] == nil{
+            }else if responseJSON["standing"] == nil{
                 self.isSectionPresent = true
-                self.tournamentsPointTableInformation = responseArray
+                self.tournamentsPointTableInformation = responseJSON
                 self.groupData = self.tournamentsPointTableInformation["standings"]! as! [String : AnyObject]
                 self.keys = self.tournamentsPointTableInformation["standings"]!.allKeys as! [String]
                 for i in 0..<self.keys.count{

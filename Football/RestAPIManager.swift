@@ -42,7 +42,10 @@ class RestAPIManager: NSObject {
         let session = URLSession.shared
         let task = session.dataTask(with: request, completionHandler: { (data, response, error) in
             
-            let json = try? JSONSerialization.jsonObject(with: data!, options: [])
+            guard let json = try? JSONSerialization.jsonObject(with: data!, options: []) else{
+                print("Data Not found")
+                return
+            }
             
             //let json: JSONSerialization = JSONSerialization() //JSONSerialization(data : dataa)
             onCompletion(json as! NSArray ,error as NSError?)

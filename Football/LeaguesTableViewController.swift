@@ -80,13 +80,16 @@ class LeaguesTableViewController: UITableViewController {
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if(segue.identifier == "PointTable"){
+        if(segue.identifier == "tabController"){
             var indexPath = self.tableView.indexPathForSelectedRow
-            let destinationVC: PointTableViewController = segue.destination as! PointTableViewController
-            destinationVC.leagueInformation = leagueInfo[(indexPath?.row)!]
-            destinationVC.title = self.tableView.cellForRow(at: indexPath!)?.textLabel?.text
+            let destinationTab: LeagueTabBarController = segue.destination as! LeagueTabBarController
+            destinationTab.title = self.tableView.cellForRow(at: indexPath!)?.textLabel?.text
+            
+            let fixtureVC: FixtureViewController = destinationTab.viewControllers?[0] as! FixtureViewController
+            fixtureVC.leagueInformation = leagueInfo[(indexPath?.row)!]
+            
+            let pointTableVC: PointTableViewController = destinationTab.viewControllers?[1] as! PointTableViewController
+            pointTableVC.leagueInformation = leagueInfo[(indexPath?.row)!]
         }
-        
     }
-
 }
