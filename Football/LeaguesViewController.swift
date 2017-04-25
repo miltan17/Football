@@ -14,7 +14,7 @@ class LeaguesViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.addGestureRecognizer(revealViewController().panGestureRecognizer())
-        self.title = "Leagues"
+        self.title = "Secect Any League"
         initLeaguesData()
     }
     
@@ -65,6 +65,19 @@ class LeaguesViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.textLabel?.text = leagues[indexPath.row]
         return cell
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "teamsControllerSegue"){
+            var indexPath = self.leaguesTable.indexPathForSelectedRow
+            let destinationVC: TeamsViewController = segue.destination as! TeamsViewController
+            destinationVC.title = self.leaguesTable.cellForRow(at: indexPath!)?.textLabel?.text
+            
+            var info:[String: AnyObject] = leagueInfo[(indexPath?.row)!]
+            let links:[String: AnyObject] = info["_links"] as! [String : AnyObject]
+            info = links["teams"] as! [String : AnyObject]
+            destinationVC.teamsURL = info["href"] as! String
+        }
     }
 
 
