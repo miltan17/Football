@@ -46,7 +46,6 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
                 self.teams.append(eachTeamInfo)
             }
             self.refresh()
-        
         }
     }
     
@@ -70,5 +69,15 @@ class TeamsViewController: UIViewController, UITableViewDataSource, UITableViewD
         cell.textLabel?.text = teams[indexPath.row]["name"]
         cell.detailTextLabel?.text = teams[indexPath.row]["code"]
         return cell
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "playersSegue"{
+            var indexPath = self.teamsTable.indexPathForSelectedRow
+            let destinationVC: PlayersViewController = segue.destination as! PlayersViewController
+            destinationVC.title = self.teamsTable.cellForRow(at: indexPath!)?.textLabel?.text
+            
+            destinationVC.playersURL = self.teams[(indexPath?.row)!]["Playerslink"]!
+        }
     }
 }
