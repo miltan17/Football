@@ -45,10 +45,10 @@ class LeaguesTableViewController: UITableViewController {
     
     private func animateTable(){
         let cells = tableView.visibleCells
-        let width  = tableView.bounds.size.width
+        let height  = tableView.bounds.size.height
         
         for cell in cells{
-            cell.transform = CGAffineTransform(translationX: width , y: 0)
+            cell.transform = CGAffineTransform(translationX: 0 , y: height)
         }
         
         var delayCount = 0

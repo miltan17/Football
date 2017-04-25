@@ -83,10 +83,10 @@
             </objects>
             <point key="canvasLocation" x="911" y="124"/>
         </scene>
-        <!--Team View Controller-->
+        <!--Leagues View Controller-->
         <scene sceneID="aqa-fL-qsp">
             <objects>
-                <viewController id="wNF-WC-ROo" customClass="TeamViewController" customModule="Football" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="wNF-WC-ROo" customClass="LeaguesViewController" customModule="Football" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yPg-gc-ejZ"/>
                         <viewControllerLayoutGuide type="bottom" id="SfU-ET-QrG"/>
@@ -94,13 +94,42 @@
                     <view key="view" contentMode="scaleToFill" id="xWq-gp-aGN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dDm-Ql-JO9">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" id="pc3-zm-aj7">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pc3-zm-aj7" id="9sC-3e-0FI">
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="wNF-WC-ROo" id="rFO-6d-kdK"/>
+                                    <outlet property="delegate" destination="wNF-WC-ROo" id="mkP-dh-vrN"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="dDm-Ql-JO9" secondAttribute="trailing" id="Q1e-UL-gX1"/>
+                            <constraint firstItem="dDm-Ql-JO9" firstAttribute="leading" secondItem="xWq-gp-aGN" secondAttribute="leading" id="d87-z1-hhv"/>
+                            <constraint firstItem="SfU-ET-QrG" firstAttribute="top" secondItem="dDm-Ql-JO9" secondAttribute="bottom" id="ndb-Km-szT"/>
+                            <constraint firstItem="dDm-Ql-JO9" firstAttribute="top" secondItem="xWq-gp-aGN" secondAttribute="top" id="pDa-8j-ghE"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="94E-Nc-rwT"/>
+                    <connections>
+                        <outlet property="leaguesTable" destination="dDm-Ql-JO9" id="oVO-TR-t9C"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rfs-nr-Kpn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2470" y="537"/>
+            <point key="canvasLocation" x="2469.5999999999999" y="536.58170914542734"/>
         </scene>
         <!--Fixtures View Controller-->
         <scene sceneID="ncg-Lb-gps">
@@ -271,7 +300,7 @@
             </objects>
             <point key="canvasLocation" x="3705" y="-1799"/>
         </scene>
-        <!--Item-->
+        <!--Fixture View Controller-->
         <scene sceneID="YlT-wE-Q8v">
             <objects>
                 <viewController id="qO6-q9-3uN" customClass="FixtureViewController" customModule="Football" customModuleProvider="target" sceneMemberID="viewController">
@@ -374,7 +403,7 @@
                             <constraint firstItem="dfG-4X-xAi" firstAttribute="top" secondItem="Zum-Ca-2iE" secondAttribute="top" id="wZW-kq-Eft"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="JFt-C3-SMF"/>
+                    <tabBarItem key="tabBarItem" systemItem="recents" id="JFt-C3-SMF"/>
                     <connections>
                         <outlet property="fixtureTableView" destination="dfG-4X-xAi" id="Vxi-xP-lbG"/>
                     </connections>

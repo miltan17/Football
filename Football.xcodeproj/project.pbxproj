@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6A03F2F71E825780006871A1 /* TeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A03F2F61E825780006871A1 /* TeamViewController.swift */; };
+		6A03F2F71E825780006871A1 /* LeaguesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A03F2F61E825780006871A1 /* LeaguesViewController.swift */; };
 		6A03F2F91E82676E006871A1 /* RestAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A03F2F81E82676E006871A1 /* RestAPIManager.swift */; };
 		6A03F2FB1E82912D006871A1 /* PointTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A03F2FA1E82912D006871A1 /* PointTableViewController.swift */; };
 		6A16A7711E7FE3D70032D46C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A16A7701E7FE3D70032D46C /* AppDelegate.swift */; };
@@ -22,13 +22,14 @@
 		6A59E9361E9DEB7800E6EC9E /* LeagueTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A59E9351E9DEB7800E6EC9E /* LeagueTabBarController.swift */; };
 		6A59E93A1E9E1A5700E6EC9E /* FixtureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A59E9391E9E1A5700E6EC9E /* FixtureViewController.swift */; };
 		6A59E93C1E9E2EF500E6EC9E /* fixtureTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A59E93B1E9E2EF500E6EC9E /* fixtureTableCell.swift */; };
+		6A5A33D31EAF1F390070CAAC /* TeamsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5A33D21EAF1F390070CAAC /* TeamsViewController.swift */; };
 		6A7E422C1E80DB640097B0A8 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A7E422B1E80DB640097B0A8 /* SWRevealViewController.m */; };
 		6A7E422E1E80E6B50097B0A8 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7E422D1E80E6B50097B0A8 /* MenuTableViewController.swift */; };
 		6ACC886A1E81344100E638FE /* LeaguesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACC88691E81344100E638FE /* LeaguesTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		6A03F2F61E825780006871A1 /* TeamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamViewController.swift; sourceTree = "<group>"; };
+		6A03F2F61E825780006871A1 /* LeaguesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaguesViewController.swift; sourceTree = "<group>"; };
 		6A03F2F81E82676E006871A1 /* RestAPIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestAPIManager.swift; sourceTree = "<group>"; };
 		6A03F2FA1E82912D006871A1 /* PointTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointTableViewController.swift; sourceTree = "<group>"; };
 		6A16A76D1E7FE3D70032D46C /* Football.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Football.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,6 +46,7 @@
 		6A59E9351E9DEB7800E6EC9E /* LeagueTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeagueTabBarController.swift; sourceTree = "<group>"; };
 		6A59E9391E9E1A5700E6EC9E /* FixtureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FixtureViewController.swift; sourceTree = "<group>"; };
 		6A59E93B1E9E2EF500E6EC9E /* fixtureTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = fixtureTableCell.swift; sourceTree = "<group>"; };
+		6A5A33D21EAF1F390070CAAC /* TeamsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamsViewController.swift; sourceTree = "<group>"; };
 		6A7E42281E80DB0D0097B0A8 /* Football-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Football-Bridging-Header.h"; sourceTree = "<group>"; };
 		6A7E422A1E80DB640097B0A8 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		6A7E422B1E80DB640097B0A8 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 		6A16A76F1E7FE3D70032D46C /* Football */ = {
 			isa = PBXGroup;
 			children = (
+				6A5A33D11EAF1A200070CAAC /* Teams View Controller */,
 				6A16A7821E7FE3F00032D46C /* Supporting Files */,
 				6A7E42291E80DB640097B0A8 /* SWRevealViewController */,
 				6A46D81E1E92381500A8EB33 /* Fixtures ViewController */,
@@ -91,7 +94,6 @@
 				6A7E422D1E80E6B50097B0A8 /* MenuTableViewController.swift */,
 				6A03F2F81E82676E006871A1 /* RestAPIManager.swift */,
 				6A43F8371E80F05C00D26163 /* ConstantUrl.swift */,
-				6A03F2F61E825780006871A1 /* TeamViewController.swift */,
 			);
 			path = Football;
 			sourceTree = "<group>";
@@ -128,6 +130,15 @@
 				6A54DD6F1E9CB1B800268A4F /* FixtureCell.swift */,
 			);
 			name = "Fixtures ViewController";
+			sourceTree = "<group>";
+		};
+		6A5A33D11EAF1A200070CAAC /* Teams View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				6A03F2F61E825780006871A1 /* LeaguesViewController.swift */,
+				6A5A33D21EAF1F390070CAAC /* TeamsViewController.swift */,
+			);
+			name = "Teams View Controller";
 			sourceTree = "<group>";
 		};
 		6A7E42291E80DB640097B0A8 /* SWRevealViewController */ = {
@@ -218,7 +229,7 @@
 			files = (
 				6ACC886A1E81344100E638FE /* LeaguesTableViewController.swift in Sources */,
 				6A59E93C1E9E2EF500E6EC9E /* fixtureTableCell.swift in Sources */,
-				6A03F2F71E825780006871A1 /* TeamViewController.swift in Sources */,
+				6A03F2F71E825780006871A1 /* LeaguesViewController.swift in Sources */,
 				6A46D8201E92385300A8EB33 /* FixturesViewController.swift in Sources */,
 				6A03F2FB1E82912D006871A1 /* PointTableViewController.swift in Sources */,
 				6A59E93A1E9E1A5700E6EC9E /* FixtureViewController.swift in Sources */,
@@ -229,6 +240,7 @@
 				6A54DD701E9CB1B800268A4F /* FixtureCell.swift in Sources */,
 				6A03F2F91E82676E006871A1 /* RestAPIManager.swift in Sources */,
 				6A16A7711E7FE3D70032D46C /* AppDelegate.swift in Sources */,
+				6A5A33D31EAF1F390070CAAC /* TeamsViewController.swift in Sources */,
 				6A7E422C1E80DB640097B0A8 /* SWRevealViewController.m in Sources */,
 				6A3FAD641E90D7F600FE0C0E /* PointTableCell.swift in Sources */,
 			);
